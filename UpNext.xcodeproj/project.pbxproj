@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B84202190C430001DE747 /* ScrollingTextView.swift */; };
 		DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F2C218E69AF00B7AE5E /* AppDelegate.swift */; };
 		DB184F31218E69B000B7AE5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB184F30218E69B000B7AE5E /* Assets.xcassets */; };
 		DB184F34218E69B000B7AE5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB184F32218E69B000B7AE5E /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB0B84202190C430001DE747 /* ScrollingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 		DB184F29218E69AF00B7AE5E /* UpNext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpNext.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB184F2C218E69AF00B7AE5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB184F30218E69B000B7AE5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		DB184F4C218FAF4700B7AE5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DB0B84202190C430001DE747 /* ScrollingTextView.swift */,
 				DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */,
 			);
 			path = Views;
@@ -215,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */,
+				DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */,
 				DB184F51218FB06B00B7AE5E /* EmailSelectionCell.swift in Sources */,
 				DB184F56218FD3C000B7AE5E /* PreferencesWindowController.swift in Sources */,
 				DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */,
@@ -358,7 +362,7 @@
 				CODE_SIGN_ENTITLEMENTS = UpNext/Resources/UpNext.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = RHRFK5K27W;
+				DEVELOPMENT_TEAM = P7X26YDXDE;
 				INFOPLIST_FILE = UpNext/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -377,7 +381,7 @@
 				CODE_SIGN_ENTITLEMENTS = UpNext/Resources/UpNext.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = RHRFK5K27W;
+				DEVELOPMENT_TEAM = P7X26YDXDE;
 				INFOPLIST_FILE = UpNext/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

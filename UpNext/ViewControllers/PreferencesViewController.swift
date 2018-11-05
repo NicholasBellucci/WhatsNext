@@ -11,14 +11,12 @@ import EventKit
 
 class PreferencesViewController: NSViewController {
 
-    @IBOutlet weak var tableView: NSTableView!
-
     let eventStore = EKEventStore()
     var calendars = [EKCalendar]()
     var events = [EKEvent]()
 
     override func viewDidLoad() {
-        tableView.usesAutomaticRowHeights = true
+        
     }
 }
 
