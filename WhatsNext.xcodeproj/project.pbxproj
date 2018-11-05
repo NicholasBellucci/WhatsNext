@@ -19,12 +19,12 @@
 
 /* Begin PBXFileReference section */
 		DB0B84202190C430001DE747 /* ScrollingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
-		DB184F29218E69AF00B7AE5E /* UpNext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpNext.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB184F29218E69AF00B7AE5E /* WhatsNext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsNext.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB184F2C218E69AF00B7AE5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB184F30218E69B000B7AE5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB184F33218E69B000B7AE5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB184F35218E69B000B7AE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB184F36218E69B000B7AE5E /* UpNext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UpNext.entitlements; sourceTree = "<group>"; };
+		DB184F36218E69B000B7AE5E /* WhatsNext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsNext.entitlements; sourceTree = "<group>"; };
 		DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		DB184F3E218E9F6F00B7AE5E /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSelectionCell.swift; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		DB184F20218E69AF00B7AE5E = {
 			isa = PBXGroup;
 			children = (
-				DB184F2B218E69AF00B7AE5E /* UpNext */,
+				DB184F2B218E69AF00B7AE5E /* WhatsNext */,
 				DB184F2A218E69AF00B7AE5E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,12 +53,12 @@
 		DB184F2A218E69AF00B7AE5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DB184F29218E69AF00B7AE5E /* UpNext.app */,
+				DB184F29218E69AF00B7AE5E /* WhatsNext.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DB184F2B218E69AF00B7AE5E /* UpNext */ = {
+		DB184F2B218E69AF00B7AE5E /* WhatsNext */ = {
 			isa = PBXGroup;
 			children = (
 				DB184F2C218E69AF00B7AE5E /* AppDelegate.swift */,
@@ -72,7 +72,7 @@
 				DB184F4C218FAF4700B7AE5E /* Views */,
 				DB184F52218FC27600B7AE5E /* WindowControllers */,
 			);
-			path = UpNext;
+			path = WhatsNext;
 			sourceTree = "<group>";
 		};
 		DB184F40218FAEDB00B7AE5E /* ViewControllers */ = {
@@ -134,7 +134,7 @@
 				DB184F30218E69B000B7AE5E /* Assets.xcassets */,
 				DB184F35218E69B000B7AE5E /* Info.plist */,
 				DB184F32218E69B000B7AE5E /* Main.storyboard */,
-				DB184F36218E69B000B7AE5E /* UpNext.entitlements */,
+				DB184F36218E69B000B7AE5E /* WhatsNext.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -150,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DB184F28218E69AF00B7AE5E /* UpNext */ = {
+		DB184F28218E69AF00B7AE5E /* WhatsNext */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DB184F39218E69B000B7AE5E /* Build configuration list for PBXNativeTarget "UpNext" */;
+			buildConfigurationList = DB184F39218E69B000B7AE5E /* Build configuration list for PBXNativeTarget "WhatsNext" */;
 			buildPhases = (
 				DB184F25218E69AF00B7AE5E /* Sources */,
 				DB184F26218E69AF00B7AE5E /* Frameworks */,
@@ -162,9 +162,9 @@
 			);
 			dependencies = (
 			);
-			name = UpNext;
+			name = WhatsNext;
 			productName = UpNext;
-			productReference = DB184F29218E69AF00B7AE5E /* UpNext.app */;
+			productReference = DB184F29218E69AF00B7AE5E /* WhatsNext.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -182,7 +182,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DB184F24218E69AF00B7AE5E /* Build configuration list for PBXProject "UpNext" */;
+			buildConfigurationList = DB184F24218E69AF00B7AE5E /* Build configuration list for PBXProject "WhatsNext" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -195,7 +195,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DB184F28218E69AF00B7AE5E /* UpNext */,
+				DB184F28218E69AF00B7AE5E /* WhatsNext */,
 			);
 		};
 /* End PBXProject section */
@@ -359,16 +359,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = UpNext/Resources/UpNext.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WhatsNext/Resources/WhatsNext.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P7X26YDXDE;
-				INFOPLIST_FILE = UpNext/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WhatsNext/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.UpNext;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WhatsNext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -378,16 +378,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = UpNext/Resources/UpNext.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WhatsNext/Resources/WhatsNext.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P7X26YDXDE;
-				INFOPLIST_FILE = UpNext/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WhatsNext/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.UpNext;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WhatsNext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -396,7 +396,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DB184F24218E69AF00B7AE5E /* Build configuration list for PBXProject "UpNext" */ = {
+		DB184F24218E69AF00B7AE5E /* Build configuration list for PBXProject "WhatsNext" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB184F37218E69B000B7AE5E /* Debug */,
@@ -405,7 +405,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DB184F39218E69B000B7AE5E /* Build configuration list for PBXNativeTarget "UpNext" */ = {
+		DB184F39218E69B000B7AE5E /* Build configuration list for PBXNativeTarget "WhatsNext" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB184F3A218E69B000B7AE5E /* Debug */,
