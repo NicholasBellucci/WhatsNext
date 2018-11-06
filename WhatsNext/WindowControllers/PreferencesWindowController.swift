@@ -1,6 +1,6 @@
 //
 //  PreferencesWindowController.swift
-//  UpNext
+//  WhatsNext
 //
 //  Created by Nicholas Bellucci on 11/4/18.
 //  Copyright © 2018 Nicholas Bellucci. All rights reserved.

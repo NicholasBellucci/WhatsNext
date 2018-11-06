@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  UpNext
+//  WhatsNext
 //
 //  Created by Nicholas Bellucci on 11/3/18.
 //  Copyright © 2018 Nicholas Bellucci. All rights reserved.

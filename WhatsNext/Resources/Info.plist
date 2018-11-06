@@ -25,7 +25,7 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>UpNext uses your calendar info to show you your next event.</string>
+	<string>WhatsNext needs access to your calendar to display events.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Nicholas Bellucci. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
