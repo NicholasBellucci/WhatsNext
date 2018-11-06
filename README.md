@@ -10,7 +10,7 @@
 </a>
 </p>
 
-## WhatsNext
+## About
 WhatsNext is a menubar app that displays your next calendar event.
 
 ![demo](https://github.com/NicholasBellucci/WhatsNext/blob/develop/Images/Demo.gif?raw=true)
