@@ -1,1 +1,1 @@
-![WhatsNext](https://raw.githubusercontent.com/Alamofire/Alamofire/master/alamofire.png)
+![WhatsNext](https://github.com/NicholasBellucci/WhatsNext/blob/develop/Images/Logo.png?raw=true)
