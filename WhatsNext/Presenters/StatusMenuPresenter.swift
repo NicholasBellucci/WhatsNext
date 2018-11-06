@@ -16,11 +16,21 @@ class StatusMenuPresenter: UpdateHandling {
     var updateHandler: UpdateHandler?
 
     var statusMenuViewModel: StatusMenuViewModel? {
-        guard let event = nextEvent else { return nil }
+        guard let event = event else { return nil }
         return StatusMenuViewModel(title: event.title, date: event.startDate)
     }
 
-    private var nextEvent: EKEvent? {
+    var eventStartDate: Date? {
+        guard let event = event else { return nil }
+        return event.startDate
+    }
+
+    var eventEndDate: Date? {
+        guard let event = event else { return nil }
+        return event.endDate
+    }
+
+    private var event: EKEvent? {
         guard let end = Calendar.current.date(byAdding: .day, value: 1, to: Date()) else { return nil }
         let eventsPredicate = eventStore.predicateForEvents(withStart: Date(), end: end, calendars: calendars)
         let events = eventStore.events(matching: eventsPredicate).sorted { $0.startDate < $1.startDate }
@@ -34,11 +44,13 @@ class StatusMenuPresenter: UpdateHandling {
 
 extension StatusMenuPresenter {
     func load() {
-        print(NotificationCenter.default)
         checkPermission { [weak self] error in
             guard let sself = self else { return }
             sself.calendars = EKEventStore().calendars(for: EKEntityType.event)
             sself.updateHandler?(error)
+
+            let timer = Timer(timeInterval: 60.0, target: sself, selector: #selector(sself.refreshCalendar(_:)), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer, forMode: .common)
         }
     }
 }
@@ -63,5 +75,10 @@ private extension StatusMenuPresenter {
         case .restricted, .denied:
             completion(CalendarError.denied)
         }
+    }
+
+    @objc
+    func refreshCalendar(_ timer: Timer) {
+        eventStore.refreshSourcesIfNecessary()
     }
 }

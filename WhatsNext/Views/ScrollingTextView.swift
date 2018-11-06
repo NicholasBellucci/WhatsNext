@@ -29,6 +29,8 @@ class ScrollingTextView: NSView {
         } else {
             setSpeed(newInterval: 0.0)
         }
+
+        setNeedsDisplay(NSRect(x: 0, y: 0, width: frame.width, height: frame.height))
     }
 
     override func draw(_ dirtyRect: NSRect) {
@@ -62,9 +64,8 @@ private extension ScrollingTextView {
             guard let timeInterval = timeInterval else { return }
             if timer == nil, timeInterval > 0.0, text != nil {
                 timer = Timer.scheduledTimer(withTimeInterval: newInterval, repeats: true, block: { [weak self] _ in
-                    guard let sself = self, let frame = self?.frame else { return }
+                    guard let sself = self else { return }
                     sself.point.x = sself.point.x - 1
-                    self?.setNeedsDisplay(NSRect(x: 0, y: 0, width: frame.width, height: frame.height))
                 })
 
                 guard let timer = timer else { return }
@@ -72,7 +73,6 @@ private extension ScrollingTextView {
             } else {
                 timer?.invalidate()
                 point.x = 0
-                setNeedsDisplay(NSRect(x: 0, y: 0, width: frame.width, height: frame.height))
             }
         }
     }

@@ -12,6 +12,9 @@ import EventKit
 class StatusMenuController: NSObject {
     private enum Constants {
         static let itemLength: CGFloat = 200
+        static let widthConstraint: CGFloat = 170
+        static let textViewLength: CGFloat = 150
+        static let baseLength: CGFloat = 30
         static let padding: CGFloat = 6
     }
 
@@ -19,6 +22,7 @@ class StatusMenuController: NSObject {
 
     private var presenter: StatusMenuPresenter
     private var statusItem: NSStatusItem
+    private var title: String?
 
     private lazy var handleUpdate: UpdateHandler = { [weak self] error in
         guard let sself = self else { return }
@@ -53,6 +57,12 @@ class StatusMenuController: NSObject {
         return windowController
     }()
 
+    private lazy var widthConstraint: NSLayoutConstraint = {
+        let constraint = NSLayoutConstraint(item: scrollingTextView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 0, constant: 0)
+        constraint.isActive = true
+        return constraint
+    }()
+
     required init(presenter: StatusMenuPresenter, statusItem: NSStatusItem) {
         self.presenter = presenter
         self.statusItem = statusItem
@@ -64,7 +74,7 @@ extension StatusMenuController {
     func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateEvent(_:)), name: NSNotification.Name.EKEventStoreChanged, object: nil)
 
-        statusItem.length = 30
+        statusItem.length = Constants.baseLength
         presenter.updateHandler = handleUpdate
         presenter.load()
         
@@ -85,20 +95,51 @@ private extension StatusMenuController {
             iconImageView.widthAnchor.constraint(equalToConstant: 30)])
 
         NSLayoutConstraint.activate([
-            scrollingTextView.widthAnchor.constraint(equalToConstant: 170),
             scrollingTextView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             scrollingTextView.topAnchor.constraint(equalTo: contentView.topAnchor),
             scrollingTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
+
     }
 
     func load(viewModel: StatusMenuViewModel?) {
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel else {
+            statusItem.length = Constants.baseLength
+            widthConstraint.constant = 0
+            return
+        }
+
         statusItem.length = Constants.itemLength
+        widthConstraint.constant = Constants.widthConstraint
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm a"
+        dateFormatter.dateFormat = "h:mm a"
+        title = viewModel.title
+        updateTextView(with: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+        addTimers()
+    }
 
-        scrollingTextView.setup(width: Constants.itemLength - 50, string: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+    func updateTextView(with string: String) {
+        scrollingTextView.setup(width: Constants.textViewLength, string: string)
+    }
+
+    func addTimers() {
+        guard let eventStartDate = presenter.eventStartDate, let eventEndDate = presenter.eventEndDate else { return }
+        let startDateTimer = Timer(fireAt: eventStartDate, interval: 0, target: self, selector: #selector(eventStarted(_:)), userInfo: nil, repeats: false)
+        let endDateTimer = Timer(fireAt: eventEndDate, interval: 0, target: self, selector: #selector(eventEnded(_:)), userInfo: nil, repeats: false)
+
+        RunLoop.main.add(startDateTimer, forMode: .common)
+        RunLoop.main.add(endDateTimer, forMode: .common)
+    }
+
+    @objc
+    func eventStarted(_ sender: Timer) {
+        guard let title = title else { return }
+        updateTextView(with: "Currently - \(title)")
+    }
+
+    @objc
+    func eventEnded(_ sender: Timer) {
+        presenter.load()
     }
 
     @objc
