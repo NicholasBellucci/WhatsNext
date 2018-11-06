@@ -14,12 +14,12 @@
 		DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */; };
 		DB184F51218FB06B00B7AE5E /* EmailSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */; };
 		DB184F56218FD3C000B7AE5E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F55218FD3C000B7AE5E /* PreferencesWindowController.swift */; };
-		DB184F5C2191373B00B7AE5E /* RootFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F5B2191373B00B7AE5E /* RootFlow.swift */; };
 		DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F6921913A9900B7AE5E /* StatusMenuPresenter.swift */; };
 		DB184F6D219142F200B7AE5E /* StatusMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F6C219142F200B7AE5E /* StatusMenuViewModel.swift */; };
 		DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F6F2191440700B7AE5E /* UpdateHandling.swift */; };
 		DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F712191448500B7AE5E /* NSObject+Alert.swift */; };
 		DB184F752191460500B7AE5E /* CalendarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F742191460500B7AE5E /* CalendarError.swift */; };
+		DB184F78219161C700B7AE5E /* RootFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F77219161C700B7AE5E /* RootFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,12 +33,12 @@
 		DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSelectionCell.swift; sourceTree = "<group>"; };
 		DB184F55218FD3C000B7AE5E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
-		DB184F5B2191373B00B7AE5E /* RootFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootFlow.swift; path = ../../../../Documents/RootFlow.swift; sourceTree = "<group>"; };
 		DB184F6921913A9900B7AE5E /* StatusMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuPresenter.swift; sourceTree = "<group>"; };
 		DB184F6C219142F200B7AE5E /* StatusMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuViewModel.swift; sourceTree = "<group>"; };
 		DB184F6F2191440700B7AE5E /* UpdateHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHandling.swift; sourceTree = "<group>"; };
 		DB184F712191448500B7AE5E /* NSObject+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Alert.swift"; sourceTree = "<group>"; };
 		DB184F742191460500B7AE5E /* CalendarError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarError.swift; sourceTree = "<group>"; };
+		DB184F77219161C700B7AE5E /* RootFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 			children = (
 				DB184F2C218E69AF00B7AE5E /* AppDelegate.swift */,
 				DB184F5921911CFE00B7AE5E /* Extensions */,
-				DB184F5A2191371E00B7AE5E /* Flows */,
+				DB184F79219161D000B7AE5E /* Flows */,
 				DB184F73219145CD00B7AE5E /* Models */,
 				DB184F6821913A8800B7AE5E /* Presenters */,
 				DB184F6E219143F900B7AE5E /* Protocols */,
@@ -130,14 +130,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DB184F5A2191371E00B7AE5E /* Flows */ = {
-			isa = PBXGroup;
-			children = (
-				DB184F5B2191373B00B7AE5E /* RootFlow.swift */,
-			);
-			path = Flows;
-			sourceTree = "<group>";
-		};
 		DB184F6821913A8800B7AE5E /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +160,14 @@
 				DB184F742191460500B7AE5E /* CalendarError.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DB184F79219161D000B7AE5E /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F77219161C700B7AE5E /* RootFlow.swift */,
+			);
+			path = Flows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,8 +245,8 @@
 				DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */,
 				DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */,
 				DB184F51218FB06B00B7AE5E /* EmailSelectionCell.swift in Sources */,
-				DB184F5C2191373B00B7AE5E /* RootFlow.swift in Sources */,
 				DB184F56218FD3C000B7AE5E /* PreferencesWindowController.swift in Sources */,
+				DB184F78219161C700B7AE5E /* RootFlow.swift in Sources */,
 				DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */,
 				DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */,
 				DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */,
