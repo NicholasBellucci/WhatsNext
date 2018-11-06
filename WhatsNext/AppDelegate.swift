@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu(title: "Calendar")
         menu.addItem(withTitle: "Open Calendar", action: #selector(calendarAction(_:)), keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(withTitle: "Preferences", action: #selector(preferencesAction(_:)), keyEquivalent: "")
+//        menu.addItem(withTitle: "Preferences", action: #selector(preferencesAction(_:)), keyEquivalent: "")
         menu.addItem(withTitle: "Quit", action: #selector(quitAction(_:)), keyEquivalent: "")
         return menu
     }()
