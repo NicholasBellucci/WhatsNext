@@ -12,9 +12,14 @@
 		DB184F31218E69B000B7AE5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB184F30218E69B000B7AE5E /* Assets.xcassets */; };
 		DB184F34218E69B000B7AE5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB184F32218E69B000B7AE5E /* Main.storyboard */; };
 		DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */; };
-		DB184F3F218E9F6F00B7AE5E /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F3E218E9F6F00B7AE5E /* PreferencesViewController.swift */; };
 		DB184F51218FB06B00B7AE5E /* EmailSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */; };
 		DB184F56218FD3C000B7AE5E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F55218FD3C000B7AE5E /* PreferencesWindowController.swift */; };
+		DB184F5C2191373B00B7AE5E /* RootFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F5B2191373B00B7AE5E /* RootFlow.swift */; };
+		DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F6921913A9900B7AE5E /* StatusMenuPresenter.swift */; };
+		DB184F6D219142F200B7AE5E /* StatusMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F6C219142F200B7AE5E /* StatusMenuViewModel.swift */; };
+		DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F6F2191440700B7AE5E /* UpdateHandling.swift */; };
+		DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F712191448500B7AE5E /* NSObject+Alert.swift */; };
+		DB184F752191460500B7AE5E /* CalendarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F742191460500B7AE5E /* CalendarError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +31,14 @@
 		DB184F35218E69B000B7AE5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB184F36218E69B000B7AE5E /* WhatsNext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsNext.entitlements; sourceTree = "<group>"; };
 		DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
-		DB184F3E218E9F6F00B7AE5E /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSelectionCell.swift; sourceTree = "<group>"; };
 		DB184F55218FD3C000B7AE5E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		DB184F5B2191373B00B7AE5E /* RootFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootFlow.swift; path = ../../../../Documents/RootFlow.swift; sourceTree = "<group>"; };
+		DB184F6921913A9900B7AE5E /* StatusMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuPresenter.swift; sourceTree = "<group>"; };
+		DB184F6C219142F200B7AE5E /* StatusMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuViewModel.swift; sourceTree = "<group>"; };
+		DB184F6F2191440700B7AE5E /* UpdateHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHandling.swift; sourceTree = "<group>"; };
+		DB184F712191448500B7AE5E /* NSObject+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Alert.swift"; sourceTree = "<group>"; };
+		DB184F742191460500B7AE5E /* CalendarError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +72,14 @@
 			isa = PBXGroup;
 			children = (
 				DB184F2C218E69AF00B7AE5E /* AppDelegate.swift */,
-				DB184F4E218FAF5C00B7AE5E /* Controllers */,
-				DB184F42218FAEFA00B7AE5E /* Extensions */,
-				DB184F4D218FAF5500B7AE5E /* Flows */,
-				DB184F41218FAEE300B7AE5E /* Presenters */,
+				DB184F5921911CFE00B7AE5E /* Extensions */,
+				DB184F5A2191371E00B7AE5E /* Flows */,
+				DB184F73219145CD00B7AE5E /* Models */,
+				DB184F6821913A8800B7AE5E /* Presenters */,
+				DB184F6E219143F900B7AE5E /* Protocols */,
 				DB184F4F218FAF6600B7AE5E /* Resources */,
 				DB184F40218FAEDB00B7AE5E /* ViewControllers */,
-				DB184F4B218FAF3500B7AE5E /* View Models */,
+				DB184F6B219142E300B7AE5E /* View Models */,
 				DB184F4C218FAF4700B7AE5E /* Views */,
 				DB184F52218FC27600B7AE5E /* WindowControllers */,
 			);
@@ -78,31 +89,9 @@
 		DB184F40218FAEDB00B7AE5E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DB184F3E218E9F6F00B7AE5E /* PreferencesViewController.swift */,
 				DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		DB184F41218FAEE300B7AE5E /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenters;
-			sourceTree = "<group>";
-		};
-		DB184F42218FAEFA00B7AE5E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		DB184F4B218FAF3500B7AE5E /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 		DB184F4C218FAF4700B7AE5E /* Views */ = {
@@ -112,20 +101,6 @@
 				DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DB184F4D218FAF5500B7AE5E /* Flows */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Flows;
-			sourceTree = "<group>";
-		};
-		DB184F4E218FAF5C00B7AE5E /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		DB184F4F218FAF6600B7AE5E /* Resources */ = {
@@ -145,6 +120,54 @@
 				DB184F55218FD3C000B7AE5E /* PreferencesWindowController.swift */,
 			);
 			path = WindowControllers;
+			sourceTree = "<group>";
+		};
+		DB184F5921911CFE00B7AE5E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F712191448500B7AE5E /* NSObject+Alert.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DB184F5A2191371E00B7AE5E /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F5B2191373B00B7AE5E /* RootFlow.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		DB184F6821913A8800B7AE5E /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F6921913A9900B7AE5E /* StatusMenuPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		DB184F6B219142E300B7AE5E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F6C219142F200B7AE5E /* StatusMenuViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		DB184F6E219143F900B7AE5E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F6F2191440700B7AE5E /* UpdateHandling.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DB184F73219145CD00B7AE5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB184F742191460500B7AE5E /* CalendarError.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,12 +240,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB184F6D219142F200B7AE5E /* StatusMenuViewModel.swift in Sources */,
 				DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */,
 				DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */,
+				DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */,
 				DB184F51218FB06B00B7AE5E /* EmailSelectionCell.swift in Sources */,
+				DB184F5C2191373B00B7AE5E /* RootFlow.swift in Sources */,
 				DB184F56218FD3C000B7AE5E /* PreferencesWindowController.swift in Sources */,
+				DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */,
+				DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */,
 				DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */,
-				DB184F3F218E9F6F00B7AE5E /* PreferencesViewController.swift in Sources */,
+				DB184F752191460500B7AE5E /* CalendarError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

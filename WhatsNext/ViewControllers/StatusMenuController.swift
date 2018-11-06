@@ -10,14 +10,42 @@ import Cocoa
 import EventKit
 
 class StatusMenuController: NSObject {
-
-    @IBOutlet weak var statusMenu: NSMenu!
+    private enum Constants {
+        static let itemLength: CGFloat = 200
+        static let padding: CGFloat = 6
+    }
 
     var size: CGFloat = 0
 
-    private lazy var statusItem: NSStatusItem = {
-        let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        return statusItem
+    private var presenter: StatusMenuPresenter
+    private var statusItem: NSStatusItem
+
+    private lazy var handleUpdate: UpdateHandler = { [weak self] error in
+        guard let sself = self else { return }
+        if let error = error {
+            sself.display(alert: error as? CalendarError)
+        }
+
+        self?.load(viewModel: self?.presenter.statusMenuViewModel)
+    }
+
+    private lazy var contentView: NSView? = {
+        let view = (statusItem.value(forKey: "window") as? NSWindow)?.contentView
+        return view
+    }()
+
+    private lazy var iconImageView: NSImageView = {
+        let imageView = NSImageView(frame: .zero)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = NSImage(named: "icon")
+        imageView.image?.isTemplate = true
+        return imageView
+    }()
+
+    private lazy var scrollingTextView: ScrollingTextView = {
+        let scrollingText = ScrollingTextView()
+        scrollingText.translatesAutoresizingMaskIntoConstraints = false
+        return scrollingText
     }()
 
     private lazy var windowController: PreferencesWindowController = {
@@ -25,62 +53,53 @@ class StatusMenuController: NSObject {
         return windowController
     }()
 
-    override func awakeFromNib() {
-        statusItem.highlightMode = false
-        statusItem.menu = statusMenu
-        statusItem.length = 200
-
-        let scrollingText = ScrollingTextView()
-        scrollingText.frame = NSRect(x: 0, y: 0, width: 200, height: 40)
-        scrollingText.setText(string: "This is a test amount of text plus some more")
-
-        if scrollingText.stringWidth > 195 {
-            scrollingText.setSpeed(newInterval: 1)
-        }
-
-        let view = statusItem.value(forKey: "window") as? NSWindow
-        view?.contentView?.addSubview(scrollingText)
-    }
-
-    func startAnimating() {
-        let view = statusItem.value(forKey: "window") as? NSWindow
-        view?.contentView?.layer = CALayer()
-        view?.contentView?.subviews[0].wantsLayer = true
-        view?.contentView?.subviews[0].startMarquee(size: size, duration: 7)
-    }
-
-    @IBAction func preferencesClicked(_ sender: Any) {
-        windowController.showWindow(self)
-    }
-
-    @IBAction func quitClicked(sender: NSMenuItem) {
-        NSApplication.shared.terminate(self)
+    required init(presenter: StatusMenuPresenter, statusItem: NSStatusItem) {
+        self.presenter = presenter
+        self.statusItem = statusItem
+        super.init()
     }
 }
 
-extension String {
-    func widthOfString(usingFont font: NSFont?) -> CGFloat {
-        guard let font = font else { return 0 }
-        let fontAttributes = [NSAttributedString.Key.font: font]
-        let size = self.size(withAttributes: fontAttributes)
-        return size.width
+extension StatusMenuController {
+    func setup() {
+        statusItem.length = 30
+        presenter.updateHandler = handleUpdate
+        presenter.load()
+        
+        loadSubviews()
     }
 }
 
-extension NSView {
-    func startMarquee(size: CGFloat, duration: Double) {
-        let kAnimationKey = "position"
+private extension StatusMenuController {
+    func loadSubviews() {
+        guard let contentView = contentView else { return }
+        contentView.addSubview(scrollingTextView)
+        contentView.addSubview(iconImageView)
 
-        if layer?.animation(forKey: kAnimationKey) == nil {
-            let animation = CABasicAnimation(keyPath: "position")
-            let startingPoint = NSValue(point: NSPoint(x: size, y: 0))
-            let endingPoint = NSValue(point: NSPoint(x: -size, y: 0))
-            animation.fromValue = startingPoint
-            animation.toValue = endingPoint
-            animation.repeatCount = Float.greatestFiniteMagnitude
-            animation.duration = duration
-            guard let layer = layer else { return }
-            layer.add(animation, forKey: "linearMovement")
+        NSLayoutConstraint.activate([
+            iconImageView.rightAnchor.constraint(equalTo: scrollingTextView.leftAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height - Constants.padding),
+            iconImageView.widthAnchor.constraint(equalToConstant: 30)])
+
+        NSLayoutConstraint.activate([
+            scrollingTextView.widthAnchor.constraint(equalToConstant: 170),
+            scrollingTextView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            scrollingTextView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scrollingTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
+    }
+
+    func load(viewModel: StatusMenuViewModel?) {
+        guard let viewModel = viewModel else { return }
+        statusItem.length = Constants.itemLength
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm a"
+
+        scrollingTextView.setText(string: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+
+        if scrollingTextView.stringWidth > Constants.itemLength - 50 {
+            scrollingTextView.setSpeed(newInterval: 0.04)
         }
     }
 }

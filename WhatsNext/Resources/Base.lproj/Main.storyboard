@@ -673,30 +673,9 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="UpNext" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WhatsNext" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="lUN-QT-qQa" customClass="StatusMenuController" customModule="UpNext" customModuleProvider="target">
-                    <connections>
-                        <outlet property="statusMenu" destination="89D-59-Rt8" id="1M4-Ln-CYX"/>
-                    </connections>
-                </customObject>
-                <menu title="Calendar" id="89D-59-Rt8">
-                    <items>
-                        <menuItem title="Preferences" id="AFx-u4-1ON">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="preferencesClicked:" target="lUN-QT-qQa" id="r4g-Ys-3iw"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Quit" id="7jN-6k-9ox" userLabel="Quit">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="quitClickedWithSender:" target="lUN-QT-qQa" id="ivB-1O-ncL"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                </menu>
             </objects>
             <point key="canvasLocation" x="75" y="-107"/>
         </scene>
