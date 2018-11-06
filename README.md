@@ -13,7 +13,4 @@
 ## WhatsNext
 WhatsNext is a menubar app that displays your next calendar event.
 
-<p align="center">
-<img src="https://github.com/NicholasBellucci/WhatsNext/raw/develop/Images/Demo.gif?raw=true">
-</p>
-<p align="center"></p>
+![demo](https://github.com/NicholasBellucci/WhatsNext/blob/develop/Images/Demo.gif?raw=true)
