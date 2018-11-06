@@ -1,5 +1,5 @@
 <p align="center">
-<img width="200" height="200" margin-right="100%" src="https://raw.githubusercontent.com/NicholasBellucci/WhatsNext/develop/Images/Logo.png">
+<img src="https://raw.githubusercontent.com/NicholasBellucci/WhatsNext/develop/Images/Logo.png">
 </p>
 <p align="center">
 <a href="https://img.shields.io/badge/platform-macOS-lightgrey.svg">
