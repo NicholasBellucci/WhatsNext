@@ -62,6 +62,8 @@ class StatusMenuController: NSObject {
 
 extension StatusMenuController {
     func setup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateEvent(_:)), name: NSNotification.Name.EKEventStoreChanged, object: nil)
+
         statusItem.length = 30
         presenter.updateHandler = handleUpdate
         presenter.load()
@@ -96,10 +98,11 @@ private extension StatusMenuController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm a"
 
-        scrollingTextView.setText(string: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+        scrollingTextView.setup(width: Constants.itemLength - 50, string: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+    }
 
-        if scrollingTextView.stringWidth > Constants.itemLength - 50 {
-            scrollingTextView.setSpeed(newInterval: 0.04)
-        }
+    @objc
+    func updateEvent(_ sender: NotificationCenter) {
+        presenter.load()
     }
 }

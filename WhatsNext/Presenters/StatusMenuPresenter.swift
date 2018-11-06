@@ -24,7 +24,9 @@ class StatusMenuPresenter: UpdateHandling {
         guard let end = Calendar.current.date(byAdding: .day, value: 1, to: Date()) else { return nil }
         let eventsPredicate = eventStore.predicateForEvents(withStart: Date(), end: end, calendars: calendars)
         let events = eventStore.events(matching: eventsPredicate).sorted { $0.startDate < $1.startDate }
-        return events.first
+        return events.first(where: { event -> Bool in
+            event.isAllDay == false
+        })
     }
 
     required init() {}
@@ -32,9 +34,11 @@ class StatusMenuPresenter: UpdateHandling {
 
 extension StatusMenuPresenter {
     func load() {
+        print(NotificationCenter.default)
         checkPermission { [weak self] error in
-            self?.calendars = EKEventStore().calendars(for: EKEntityType.event)
-            self?.updateHandler?(error)
+            guard let sself = self else { return }
+            sself.calendars = EKEventStore().calendars(for: EKEntityType.event)
+            sself.updateHandler?(error)
         }
     }
 }

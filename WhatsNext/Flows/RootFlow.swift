@@ -12,12 +12,16 @@ class RootFlow {
     private var statusMenuController: StatusMenuController?
 
     required init () {}
+
+    deinit {
+        print("deinit")
+    }
 }
 
 extension RootFlow {
     func loadStatusMenu(statusItem: NSStatusItem) {
         let presenter = StatusMenuPresenter()
-        let statusMenu = StatusMenuController(presenter: presenter, statusItem: statusItem)
-        statusMenu.setup()
+        statusMenuController = StatusMenuController(presenter: presenter, statusItem: statusItem)
+        statusMenuController?.setup()
     }
 }

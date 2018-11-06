@@ -15,7 +15,7 @@ class ScrollingTextView: NSView {
     private var point = NSPoint(x: 0, y: 3)
     private var timeInterval: TimeInterval?
 
-    func setText(string: String) {
+    func setup(width: CGFloat, string: String) {
         let textFontAttributes = [
             NSAttributedString.Key.font: NSFont.systemFont(ofSize: 14),
             NSAttributedString.Key.foregroundColor: NSColor.headerTextColor,
@@ -23,25 +23,11 @@ class ScrollingTextView: NSView {
 
         text = string as NSString
         stringWidth = text?.size(withAttributes: textFontAttributes).width ?? 0
-    }
 
-    func setSpeed(newInterval: TimeInterval) {
-        if newInterval != timeInterval {
-            timeInterval = newInterval
-            timer?.invalidate()
-            timer = nil
-
-            guard let timeInterval = timeInterval else { return }
-            if timer == nil, timeInterval > 0.0, text != nil {
-                timer = Timer.scheduledTimer(withTimeInterval: newInterval, repeats: true, block: { [weak self] _ in
-                    guard let sself = self, let frame = self?.frame else { return }
-                    sself.point.x = sself.point.x - 1
-                    self?.setNeedsDisplay(NSRect(x: 0, y: 0, width: frame.width, height: frame.height))
-                })
-
-                guard let timer = timer else { return }
-                RunLoop.main.add(timer, forMode: .common)
-            }
+        if stringWidth > width {
+            setSpeed(newInterval: 0.04)
+        } else {
+            setSpeed(newInterval: 0.0)
         }
     }
 
@@ -63,5 +49,31 @@ class ScrollingTextView: NSView {
             text?.draw(at: otherPoint, withAttributes: textFontAttributes)
         }
 
+    }
+}
+
+private extension ScrollingTextView {
+    func setSpeed(newInterval: TimeInterval) {
+        if newInterval != timeInterval {
+            timeInterval = newInterval
+            timer?.invalidate()
+            timer = nil
+
+            guard let timeInterval = timeInterval else { return }
+            if timer == nil, timeInterval > 0.0, text != nil {
+                timer = Timer.scheduledTimer(withTimeInterval: newInterval, repeats: true, block: { [weak self] _ in
+                    guard let sself = self, let frame = self?.frame else { return }
+                    sself.point.x = sself.point.x - 1
+                    self?.setNeedsDisplay(NSRect(x: 0, y: 0, width: frame.width, height: frame.height))
+                })
+
+                guard let timer = timer else { return }
+                RunLoop.main.add(timer, forMode: .common)
+            } else {
+                timer?.invalidate()
+                point.x = 0
+                setNeedsDisplay(NSRect(x: 0, y: 0, width: frame.width, height: frame.height))
+            }
+        }
     }
 }
