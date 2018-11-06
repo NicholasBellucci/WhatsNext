@@ -134,7 +134,7 @@ private extension StatusMenuController {
     @objc
     func eventStarted(_ sender: Timer) {
         guard let title = title else { return }
-        updateTextView(with: "Currently - \(title)")
+        updateTextView(with: "Current - \(title)")
     }
 
     @objc

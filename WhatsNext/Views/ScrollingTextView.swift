@@ -66,6 +66,7 @@ private extension ScrollingTextView {
                 timer = Timer.scheduledTimer(withTimeInterval: newInterval, repeats: true, block: { [weak self] _ in
                     guard let sself = self else { return }
                     sself.point.x = sself.point.x - 1
+                    sself.setNeedsDisplay(NSRect(x: 0, y: 0, width: sself.frame.width, height: sself.frame.height))
                 })
 
                 guard let timer = timer else { return }
