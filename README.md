@@ -1,8 +1,4 @@
-<p align="center">
-<img src = "https://github.com/NicholasBellucci/WhatsNext/blob/develop/Images/Logo.png?raw=true"/>
-</p>
-
-## About
+## ![demo](https://raw.githubusercontent.com/NicholasBellucci/WhatsNext/develop/Images/Logo.png)
 
 WhatsNext is a MacOS menubar app that displays your next calendar event.
 
