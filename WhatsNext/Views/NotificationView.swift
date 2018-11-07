@@ -11,6 +11,8 @@ import Cocoa
 
 class NotificationView: NSView {
 
+    var abortHandler: AbortModalHandler?
+
     private lazy var blurBackground: NSVisualEffectView = {
         let view = NSVisualEffectView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +36,7 @@ class NotificationView: NSView {
         let textView = ScrollingTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = NSFont.systemFont(ofSize: 13)
-        textView.setup(string: "Applestone Meeting", width: 200, speed: 0.04)
+        textView.setup(string: "Applestone Meeting", width: 210, speed: 0.04)
         return textView
     }()
 
@@ -44,6 +46,17 @@ class NotificationView: NSView {
         textView.font = NSFont.systemFont(ofSize: 11)
         textView.setup(string: "10 mins", width: 50)
         return textView
+    }()
+
+    private lazy var dismissButton: NSButton = {
+        let button = NSButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isBordered = false
+        button.contentTintColor = .white
+        button.title = "Dismiss"
+        button.target = self
+        button.action = #selector(dismissAction(_:))
+        return button
     }()
 
     required init() {
@@ -67,6 +80,7 @@ private extension NotificationView {
     func loadSubviews() {
         addSubview(blurBackground)
         blurBackground.addSubview(iconImageView)
+        blurBackground.addSubview(dismissButton)
 
         NSLayoutConstraint.activate([
             blurBackground.leftAnchor.constraint(equalTo: leftAnchor),
@@ -75,8 +89,8 @@ private extension NotificationView {
             blurBackground.bottomAnchor.constraint(equalTo: bottomAnchor)])
 
         NSLayoutConstraint.activate([
-            iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leftAnchor.constraint(equalTo: blurBackground.leftAnchor, constant: 15),
+            iconImageView.centerYAnchor.constraint(equalTo: blurBackground.centerYAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 35),
             iconImageView.heightAnchor.constraint(equalToConstant: 35)])
 
@@ -90,14 +104,26 @@ private extension NotificationView {
 
         NSLayoutConstraint.activate([
             stack.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10),
-            stack.centerYAnchor.constraint(equalTo: centerYAnchor)])
+            stack.rightAnchor.constraint(equalTo: dismissButton.leftAnchor, constant: -10),
+            stack.centerYAnchor.constraint(equalTo: blurBackground.centerYAnchor)])
 
         NSLayoutConstraint.activate([
             eventTextView.heightAnchor.constraint(equalToConstant: 25),
-            eventTextView.widthAnchor.constraint(equalToConstant: 200)])
+            eventTextView.widthAnchor.constraint(equalToConstant: 210)])
 
         NSLayoutConstraint.activate([
             eventTimeTextView.heightAnchor.constraint(equalToConstant: 15),
             eventTimeTextView.widthAnchor.constraint(equalToConstant: 50)])
+
+        NSLayoutConstraint.activate([
+            dismissButton.topAnchor.constraint(equalTo: blurBackground.topAnchor),
+            dismissButton.rightAnchor.constraint(equalTo: blurBackground.rightAnchor, constant: -10),
+            dismissButton.bottomAnchor.constraint(equalTo: blurBackground.bottomAnchor),
+            dismissButton.widthAnchor.constraint(equalToConstant: 50)])
+    }
+
+    @objc
+    func dismissAction(_ sender: NSButton) {
+        abortHandler?()
     }
 }

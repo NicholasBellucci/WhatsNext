@@ -10,6 +10,15 @@ import Foundation
 import Cocoa
 
 class NotificationViewController: NSViewController {
+
+    var abortHandler: AbortModalHandler?
+
+    private lazy var notificationView: NotificationView = {
+        let view = NotificationView()
+        view.abortHandler = abortHandler
+        return view
+    }()
+
     required init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -19,7 +28,7 @@ class NotificationViewController: NSViewController {
     }
 
     override func loadView() {
-        view = NotificationView()
+        view = notificationView
     }
 }
 

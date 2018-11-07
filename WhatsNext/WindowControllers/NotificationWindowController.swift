@@ -9,7 +9,14 @@
 import Foundation
 import Cocoa
 
+typealias AbortModalHandler = () -> ()
+
 class NotificationWindowController: NSWindowController {
+    lazy var handleAbort: AbortModalHandler = { [weak self] in
+        NSApp.abortModal()
+        self?.notificationWindow.orderOut(self)
+    }
+
     private lazy var notificationWindow: NotificationWindow = {
         let window = NotificationWindow(frame: NSRect(x: 0, y: 0, width: 345, height: 60), placement: .topRight)
         window.contentViewController = notificationViewController
@@ -19,8 +26,9 @@ class NotificationWindowController: NSWindowController {
         return window
     }()
 
-    private lazy var notificationViewController: NSViewController = {
+    private lazy var notificationViewController: NotificationViewController = {
         let viewController = NotificationViewController()
+        viewController.abortHandler = handleAbort
         return viewController
     }()
 
