@@ -10,17 +10,18 @@ import Cocoa
 
 class ScrollingTextView: NSView {
     var text: NSString?
+    var font: NSFont?
     var stringWidth: CGFloat = 0
     private var timer: Timer?
     private var point = NSPoint(x: 0, y: 3)
     private var timeInterval: TimeInterval?
 
-    func setup(width: CGFloat, string: String) {
-        let textFontAttributes = [
-            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 14),
-            NSAttributedString.Key.foregroundColor: NSColor.headerTextColor,
-            ]
+    private lazy var textFontAttributes: [NSAttributedString.Key: Any] = {
+        return [NSAttributedString.Key.font: font ?? NSFont.systemFont(ofSize: 14),
+                NSAttributedString.Key.foregroundColor: NSColor.headerTextColor]
+    }()
 
+    func setup(width: CGFloat, string: String) {
         text = string as NSString
         stringWidth = text?.size(withAttributes: textFontAttributes).width ?? 0
 
@@ -34,11 +35,6 @@ class ScrollingTextView: NSView {
     }
 
     override func draw(_ dirtyRect: NSRect) {
-        let textFontAttributes = [
-            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 14),
-            NSAttributedString.Key.foregroundColor: NSColor.headerTextColor,
-        ]
-
         if point.x + stringWidth < 0 {
             self.point.x += stringWidth + 20
         }

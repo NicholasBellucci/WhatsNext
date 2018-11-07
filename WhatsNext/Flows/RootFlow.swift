@@ -12,10 +12,6 @@ class RootFlow {
     private var statusMenuController: StatusMenuController?
 
     required init () {}
-
-    deinit {
-        print("deinit")
-    }
 }
 
 extension RootFlow {
@@ -23,5 +19,13 @@ extension RootFlow {
         let presenter = StatusMenuPresenter()
         statusMenuController = StatusMenuController(presenter: presenter, statusItem: statusItem)
         statusMenuController?.setup()
+
+        eventNotification()
+    }
+
+    func eventNotification() {
+        let controller = NotificationWindowController()
+        guard let window = controller.window else { return }
+        NSApp.runModal(for: window)
     }
 }

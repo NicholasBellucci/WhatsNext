@@ -20,6 +20,10 @@
 		DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F712191448500B7AE5E /* NSObject+Alert.swift */; };
 		DB184F752191460500B7AE5E /* CalendarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F742191460500B7AE5E /* CalendarError.swift */; };
 		DB184F78219161C700B7AE5E /* RootFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F77219161C700B7AE5E /* RootFlow.swift */; };
+		DB8592392192538100B9047A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592382192538100B9047A /* NotificationViewController.swift */; };
+		DB85923B2192543800B9047A /* NotificationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923A2192543800B9047A /* NotificationWindowController.swift */; };
+		DB85923D2192926400B9047A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923C2192926400B9047A /* NotificationView.swift */; };
+		DB8592512192BCCF00B9047A /* NotificationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592502192BCCF00B9047A /* NotificationWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		DB184F712191448500B7AE5E /* NSObject+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Alert.swift"; sourceTree = "<group>"; };
 		DB184F742191460500B7AE5E /* CalendarError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarError.swift; sourceTree = "<group>"; };
 		DB184F77219161C700B7AE5E /* RootFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFlow.swift; sourceTree = "<group>"; };
+		DB8592382192538100B9047A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		DB85923A2192543800B9047A /* NotificationWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindowController.swift; sourceTree = "<group>"; };
+		DB85923C2192926400B9047A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		DB8592502192BCCF00B9047A /* NotificationWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 				DB184F40218FAEDB00B7AE5E /* ViewControllers */,
 				DB184F6B219142E300B7AE5E /* View Models */,
 				DB184F4C218FAF4700B7AE5E /* Views */,
+				DB85924F2192BCBD00B9047A /* Windows */,
 				DB184F52218FC27600B7AE5E /* WindowControllers */,
 			);
 			path = WhatsNext;
@@ -89,6 +98,7 @@
 		DB184F40218FAEDB00B7AE5E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB8592382192538100B9047A /* NotificationViewController.swift */,
 				DB184F3C218E6EE600B7AE5E /* StatusMenuController.swift */,
 			);
 			path = ViewControllers;
@@ -97,8 +107,9 @@
 		DB184F4C218FAF4700B7AE5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DB0B84202190C430001DE747 /* ScrollingTextView.swift */,
 				DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */,
+				DB85923C2192926400B9047A /* NotificationView.swift */,
+				DB0B84202190C430001DE747 /* ScrollingTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -117,6 +128,7 @@
 		DB184F52218FC27600B7AE5E /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB85923A2192543800B9047A /* NotificationWindowController.swift */,
 				DB184F55218FD3C000B7AE5E /* PreferencesWindowController.swift */,
 			);
 			path = WindowControllers;
@@ -168,6 +180,14 @@
 				DB184F77219161C700B7AE5E /* RootFlow.swift */,
 			);
 			path = Flows;
+			sourceTree = "<group>";
+		};
+		DB85924F2192BCBD00B9047A /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				DB8592502192BCCF00B9047A /* NotificationWindow.swift */,
+			);
+			path = Windows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,16 +260,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8592512192BCCF00B9047A /* NotificationWindow.swift in Sources */,
 				DB184F6D219142F200B7AE5E /* StatusMenuViewModel.swift in Sources */,
 				DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */,
+				DB8592392192538100B9047A /* NotificationViewController.swift in Sources */,
 				DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */,
 				DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */,
 				DB184F51218FB06B00B7AE5E /* EmailSelectionCell.swift in Sources */,
 				DB184F56218FD3C000B7AE5E /* PreferencesWindowController.swift in Sources */,
 				DB184F78219161C700B7AE5E /* RootFlow.swift in Sources */,
 				DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */,
+				DB85923D2192926400B9047A /* NotificationView.swift in Sources */,
 				DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */,
 				DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */,
+				DB85923B2192543800B9047A /* NotificationWindowController.swift in Sources */,
 				DB184F752191460500B7AE5E /* CalendarError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
