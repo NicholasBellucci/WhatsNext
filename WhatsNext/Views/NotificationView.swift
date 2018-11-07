@@ -34,7 +34,7 @@ class NotificationView: NSView {
         let textView = ScrollingTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = NSFont.systemFont(ofSize: 13)
-        textView.setup(width: 200, string: "Applestone Meeting")
+        textView.setup(string: "Applestone Meeting", width: 200, speed: 0.04)
         return textView
     }()
 
@@ -42,7 +42,7 @@ class NotificationView: NSView {
         let textView = ScrollingTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = NSFont.systemFont(ofSize: 11)
-        textView.setup(width: 50, string: "10 mins")
+        textView.setup(string: "10 mins", width: 50)
         return textView
     }()
 

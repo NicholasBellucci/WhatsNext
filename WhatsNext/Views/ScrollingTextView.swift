@@ -21,12 +21,12 @@ class ScrollingTextView: NSView {
                 NSAttributedString.Key.foregroundColor: NSColor.headerTextColor]
     }()
 
-    func setup(width: CGFloat, string: String) {
+    func setup(string: String, width: CGFloat,  speed: Double = 0.0) {
         text = string as NSString
         stringWidth = text?.size(withAttributes: textFontAttributes).width ?? 0
 
         if stringWidth > width {
-            setSpeed(newInterval: 0.04)
+            setSpeed(newInterval: speed)
         } else {
             setSpeed(newInterval: 0.0)
         }

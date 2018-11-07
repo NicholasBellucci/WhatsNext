@@ -119,7 +119,7 @@ private extension StatusMenuController {
     }
 
     func updateTextView(with string: String) {
-        scrollingTextView.setup(width: Constants.textViewLength, string: string)
+        scrollingTextView.setup(string: string, width: Constants.textViewLength, speed: 0.04)
     }
 
     func addTimers() {
