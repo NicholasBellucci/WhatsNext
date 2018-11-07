@@ -10,11 +10,10 @@ import Foundation
 import Cocoa
 
 class NotificationWindowController: NSWindowController {
-    private lazy var notificationWindow: NSWindow = {
-        let window = NSWindow(contentViewController: notificationViewController)
-        window.setFrame(NSRect(x: 0, y: 0, width: 345, height: 85), display: true)
+    private lazy var notificationWindow: NotificationWindow = {
+        let window = NotificationWindow(frame: NSRect(x: 0, y: 0, width: 345, height: 60), placement: .topRight)
+        window.contentViewController = notificationViewController
         window.backgroundColor = .clear
-        window.styleMask = [NSWindow.StyleMask.fullSizeContentView]
         window.isMovableByWindowBackground = true
         window.isOpaque = false
         return window
