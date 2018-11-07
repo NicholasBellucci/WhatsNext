@@ -54,4 +54,13 @@ class NotificationWindow: NSWindow {
 
         setFrame(NSRect(x: point.x, y: point.y, width: windowFrame.width, height: windowFrame.height), display: true)
     }
+
+    override func mouseUp(with event: NSEvent) {
+        super.mouseUp(with: event)
+        setFrame(NSRect(x: 20, y: 20, width: windowFrame.width, height: windowFrame.height), display: true, animate: true)
+    }
+}
+
+private extension NotificationWindow {
+    
 }
