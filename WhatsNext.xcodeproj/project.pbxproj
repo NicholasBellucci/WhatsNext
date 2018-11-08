@@ -24,6 +24,7 @@
 		DB85923B2192543800B9047A /* NotificationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923A2192543800B9047A /* NotificationWindowController.swift */; };
 		DB85923D2192926400B9047A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923C2192926400B9047A /* NotificationView.swift */; };
 		DB8592512192BCCF00B9047A /* NotificationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592502192BCCF00B9047A /* NotificationWindow.swift */; };
+		DB8592532193C3BE00B9047A /* CGFloat+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592522193C3BE00B9047A /* CGFloat+Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		DB85923A2192543800B9047A /* NotificationWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindowController.swift; sourceTree = "<group>"; };
 		DB85923C2192926400B9047A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		DB8592502192BCCF00B9047A /* NotificationWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindow.swift; sourceTree = "<group>"; };
+		DB8592522193C3BE00B9047A /* CGFloat+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Math.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		DB184F5921911CFE00B7AE5E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DB8592522193C3BE00B9047A /* CGFloat+Math.swift */,
 				DB184F712191448500B7AE5E /* NSObject+Alert.swift */,
 			);
 			path = Extensions;
@@ -262,6 +265,7 @@
 			files = (
 				DB8592512192BCCF00B9047A /* NotificationWindow.swift in Sources */,
 				DB184F6D219142F200B7AE5E /* StatusMenuViewModel.swift in Sources */,
+				DB8592532193C3BE00B9047A /* CGFloat+Math.swift in Sources */,
 				DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */,
 				DB8592392192538100B9047A /* NotificationViewController.swift in Sources */,
 				DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */,
