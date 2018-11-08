@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import EventKit
 
 class RootFlow {
     private var statusMenuController: StatusMenuController?
@@ -16,15 +17,20 @@ class RootFlow {
 
 extension RootFlow {
     func loadStatusMenu(statusItem: NSStatusItem) {
+        NotificationCenter.default.addObserver(self, selector: #selector(eventNotification(_:)),
+                                               name: Notifications.alert.name, object: nil)
+
         let presenter = StatusMenuPresenter()
         statusMenuController = StatusMenuController(presenter: presenter, statusItem: statusItem)
         statusMenuController?.setup()
-
-        eventNotification()
     }
+}
 
-    func eventNotification() {
-        let controller = NotificationWindowController()
+private extension RootFlow {
+    @objc
+    func eventNotification(_ sender: Notification) {
+        guard let event = sender.object as? EKEvent else { return }
+        let controller = NotificationWindowController(event: event)
         guard let window = controller.window else { return }
         NSApp.runModal(for: window)
     }

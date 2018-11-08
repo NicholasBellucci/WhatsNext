@@ -15,9 +15,9 @@ class StatusMenuPresenter: UpdateHandling {
 
     var updateHandler: UpdateHandler?
 
-    var statusMenuViewModel: StatusMenuViewModel? {
+    var eventViewModel: EventViewModel? {
         guard let event = event else { return nil }
-        return StatusMenuViewModel(title: event.title, date: event.startDate)
+        return EventViewModel(title: event.title, date: event.startDate)
     }
 
     var eventStartDate: Date? {
@@ -31,7 +31,8 @@ class StatusMenuPresenter: UpdateHandling {
     }
 
     private var event: EKEvent? {
-        guard let end = Calendar.current.date(byAdding: .day, value: 1, to: Date()) else { return nil }
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        guard let end = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay) else { return nil }
         let eventsPredicate = eventStore.predicateForEvents(withStart: Date(), end: end, calendars: calendars)
         let events = eventStore.events(matching: eventsPredicate).sorted { $0.startDate < $1.startDate }
         return events.first(where: { event -> Bool in
@@ -52,6 +53,10 @@ extension StatusMenuPresenter {
             let timer = Timer(timeInterval: 60.0, target: sself, selector: #selector(sself.refreshCalendar(_:)), userInfo: nil, repeats: true)
             RunLoop.main.add(timer, forMode: .common)
         }
+    }
+
+    func currentEvent() -> EKEvent? {
+        return event
     }
 }
 

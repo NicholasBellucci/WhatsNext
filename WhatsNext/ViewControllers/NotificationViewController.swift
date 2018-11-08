@@ -13,13 +13,16 @@ class NotificationViewController: NSViewController {
 
     var abortHandler: AbortModalHandler?
 
+    private var presenter: NotificationPresenter
+
     private lazy var notificationView: NotificationView = {
         let view = NotificationView()
         view.abortHandler = abortHandler
         return view
     }()
 
-    required init() {
+    required init(presenter: NotificationPresenter) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -28,6 +31,8 @@ class NotificationViewController: NSViewController {
     }
 
     override func loadView() {
+        guard let viewModel = presenter.eventViewModel else { return }
+        notificationView.load(viewModel: viewModel)
         view = notificationView
     }
 }

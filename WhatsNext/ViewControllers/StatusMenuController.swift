@@ -23,6 +23,9 @@ class StatusMenuController: NSObject {
     private var presenter: StatusMenuPresenter
     private var statusItem: NSStatusItem
     private var title: String?
+    private var alertTimer: Timer?
+    private var startDateTimer: Timer?
+    private var endDateTimer: Timer?
 
     private lazy var handleUpdate: UpdateHandler = { [weak self] error in
         guard let sself = self else { return }
@@ -30,7 +33,7 @@ class StatusMenuController: NSObject {
             sself.display(alert: error as? CalendarError)
         }
 
-        self?.load(viewModel: self?.presenter.statusMenuViewModel)
+        self?.load(viewModel: self?.presenter.eventViewModel)
     }
 
     private lazy var contentView: NSView? = {
@@ -101,7 +104,7 @@ private extension StatusMenuController {
 
     }
 
-    func load(viewModel: StatusMenuViewModel?) {
+    func load(viewModel: EventViewModel?) {
         guard let viewModel = viewModel else {
             statusItem.length = Constants.baseLength
             widthConstraint.constant = 0
@@ -115,6 +118,7 @@ private extension StatusMenuController {
         dateFormatter.dateFormat = "h:mm a"
         title = viewModel.title
         updateTextView(with: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+        clearTimers()
         addTimers()
     }
 
@@ -124,11 +128,27 @@ private extension StatusMenuController {
 
     func addTimers() {
         guard let eventStartDate = presenter.eventStartDate, let eventEndDate = presenter.eventEndDate else { return }
-        let startDateTimer = Timer(fireAt: eventStartDate, interval: 0, target: self, selector: #selector(eventStarted(_:)), userInfo: nil, repeats: false)
-        let endDateTimer = Timer(fireAt: eventEndDate, interval: 0, target: self, selector: #selector(eventEnded(_:)), userInfo: nil, repeats: false)
+        let reminderDate = eventStartDate.add(minutes: -10)
+        alertTimer = Date() < reminderDate ? Timer(fireAt: reminderDate, target: self, selector: #selector(eventReminder(_:))) : nil
+        startDateTimer = Timer(fireAt: eventStartDate, target: self, selector: #selector(eventStarted(_:)))
+        endDateTimer = Timer(fireAt: eventEndDate, target: self, selector: #selector(eventEnded(_:)))
 
-        RunLoop.main.add(startDateTimer, forMode: .common)
-        RunLoop.main.add(endDateTimer, forMode: .common)
+        RunLoop.main.add([alertTimer, startDateTimer, endDateTimer], forMode: .common)
+    }
+
+    func clearTimers() {
+        alertTimer?.invalidate()
+        startDateTimer?.invalidate()
+        endDateTimer?.invalidate()
+
+        alertTimer = nil
+        startDateTimer = nil
+        endDateTimer = nil
+    }
+
+    @objc
+    func eventReminder(_ sender: Timer) {
+        NotificationCenter.default.post(name: Notifications.alert.name, object: presenter.currentEvent())
     }
 
     @objc

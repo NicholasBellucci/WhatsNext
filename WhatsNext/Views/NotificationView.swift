@@ -36,7 +36,6 @@ class NotificationView: NSView {
         let textView = ScrollingTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = NSFont.systemFont(ofSize: 13)
-        textView.setup(string: "Applestone Meeting", width: 210, speed: 0.04)
         return textView
     }()
 
@@ -66,6 +65,12 @@ class NotificationView: NSView {
 
     required init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension NotificationView {
+    func load(viewModel: EventViewModel) {
+        eventTextView.setup(string: viewModel.title, width: 210, speed: 0.04)
     }
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import Cocoa
+import EventKit
 
 typealias AbortModalHandler = () -> ()
 
@@ -16,6 +17,8 @@ class NotificationWindowController: NSWindowController {
         NSApp.abortModal()
         self?.notificationWindow.orderOut(self)
     }
+
+    private var event: EKEvent
 
     private lazy var notificationWindow: NotificationWindow = {
         let window = NotificationWindow(frame: NSRect(x: 0, y: 0, width: 345, height: 60), placement: .topRight)
@@ -27,12 +30,14 @@ class NotificationWindowController: NSWindowController {
     }()
 
     private lazy var notificationViewController: NotificationViewController = {
-        let viewController = NotificationViewController()
+        let presenter = NotificationPresenter(event: event)
+        let viewController = NotificationViewController(presenter: presenter)
         viewController.abortHandler = handleAbort
         return viewController
     }()
 
-    required init() {
+    required init(event: EKEvent) {
+        self.event = event
         super.init(window: nil)
         setup()
     }

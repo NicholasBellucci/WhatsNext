@@ -1,5 +1,5 @@
 //
-//  StatusMenuViewModel.swift
+//  EventViewModel.swift
 //  WhatsNext
 //
 //  Created by Nicholas Bellucci on 11/5/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StatusMenuViewModel {
+struct EventViewModel {
     let title: String
     let date: Date
 }

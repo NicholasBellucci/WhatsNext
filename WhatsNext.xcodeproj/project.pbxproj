@@ -25,6 +25,12 @@
 		DB85923D2192926400B9047A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923C2192926400B9047A /* NotificationView.swift */; };
 		DB8592512192BCCF00B9047A /* NotificationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592502192BCCF00B9047A /* NotificationWindow.swift */; };
 		DB8592532193C3BE00B9047A /* CGFloat+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592522193C3BE00B9047A /* CGFloat+Math.swift */; };
+		DB8592552193CA1F00B9047A /* EventAlertNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592542193CA1F00B9047A /* EventAlertNotification.swift */; };
+		DB8592582193CA8B00B9047A /* RawRepresentable+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592572193CA8B00B9047A /* RawRepresentable+Notification.swift */; };
+		DB85925A2193D65300B9047A /* RunLoop+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592592193D65300B9047A /* RunLoop+Utils.swift */; };
+		DB85925C2193D83300B9047A /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85925B2193D83300B9047A /* Date+Utils.swift */; };
+		DB85925E2193D91E00B9047A /* Timer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85925D2193D91E00B9047A /* Timer+Utils.swift */; };
+		DB8592602193EC6B00B9047A /* NotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85925F2193EC6B00B9047A /* NotificationPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +55,12 @@
 		DB85923C2192926400B9047A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		DB8592502192BCCF00B9047A /* NotificationWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindow.swift; sourceTree = "<group>"; };
 		DB8592522193C3BE00B9047A /* CGFloat+Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Math.swift"; sourceTree = "<group>"; };
+		DB8592542193CA1F00B9047A /* EventAlertNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAlertNotification.swift; sourceTree = "<group>"; };
+		DB8592572193CA8B00B9047A /* RawRepresentable+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Notification.swift"; sourceTree = "<group>"; };
+		DB8592592193D65300B9047A /* RunLoop+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RunLoop+Utils.swift"; sourceTree = "<group>"; };
+		DB85925B2193D83300B9047A /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		DB85925D2193D91E00B9047A /* Timer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Utils.swift"; sourceTree = "<group>"; };
+		DB85925F2193EC6B00B9047A /* NotificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,7 @@
 				DB184F5921911CFE00B7AE5E /* Extensions */,
 				DB184F79219161D000B7AE5E /* Flows */,
 				DB184F73219145CD00B7AE5E /* Models */,
+				DB8592562193CA2500B9047A /* Notifications */,
 				DB184F6821913A8800B7AE5E /* Presenters */,
 				DB184F6E219143F900B7AE5E /* Protocols */,
 				DB184F4F218FAF6600B7AE5E /* Resources */,
@@ -139,8 +152,12 @@
 		DB184F5921911CFE00B7AE5E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DB85925B2193D83300B9047A /* Date+Utils.swift */,
 				DB8592522193C3BE00B9047A /* CGFloat+Math.swift */,
 				DB184F712191448500B7AE5E /* NSObject+Alert.swift */,
+				DB8592572193CA8B00B9047A /* RawRepresentable+Notification.swift */,
+				DB8592592193D65300B9047A /* RunLoop+Utils.swift */,
+				DB85925D2193D91E00B9047A /* Timer+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -148,6 +165,7 @@
 		DB184F6821913A8800B7AE5E /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				DB85925F2193EC6B00B9047A /* NotificationPresenter.swift */,
 				DB184F6921913A9900B7AE5E /* StatusMenuPresenter.swift */,
 			);
 			path = Presenters;
@@ -191,6 +209,14 @@
 				DB8592502192BCCF00B9047A /* NotificationWindow.swift */,
 			);
 			path = Windows;
+			sourceTree = "<group>";
+		};
+		DB8592562193CA2500B9047A /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				DB8592542193CA1F00B9047A /* EventAlertNotification.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +292,11 @@
 				DB8592512192BCCF00B9047A /* NotificationWindow.swift in Sources */,
 				DB184F6D219142F200B7AE5E /* StatusMenuViewModel.swift in Sources */,
 				DB8592532193C3BE00B9047A /* CGFloat+Math.swift in Sources */,
+				DB8592602193EC6B00B9047A /* NotificationPresenter.swift in Sources */,
+				DB8592552193CA1F00B9047A /* EventAlertNotification.swift in Sources */,
+				DB8592582193CA8B00B9047A /* RawRepresentable+Notification.swift in Sources */,
+				DB85925C2193D83300B9047A /* Date+Utils.swift in Sources */,
+				DB85925E2193D91E00B9047A /* Timer+Utils.swift in Sources */,
 				DB184F3D218E6EE600B7AE5E /* StatusMenuController.swift in Sources */,
 				DB8592392192538100B9047A /* NotificationViewController.swift in Sources */,
 				DB0B84212190C430001DE747 /* ScrollingTextView.swift in Sources */,
@@ -276,6 +307,7 @@
 				DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */,
 				DB85923D2192926400B9047A /* NotificationView.swift in Sources */,
 				DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */,
+				DB85925A2193D65300B9047A /* RunLoop+Utils.swift in Sources */,
 				DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */,
 				DB85923B2192543800B9047A /* NotificationWindowController.swift in Sources */,
 				DB184F752191460500B7AE5E /* CalendarError.swift in Sources */,
