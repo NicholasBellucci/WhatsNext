@@ -109,8 +109,13 @@ private extension StatusMenuController {
         guard let eventStartDate = presenter.eventStartDate, let eventEndDate = presenter.eventEndDate else { return }
         let reminderDate = eventStartDate.add(minutes: -10)
         alertTimer = Date() < reminderDate ? Timer(fireAt: reminderDate, target: self, selector: #selector(eventReminder(_:))) : nil
-        startDateTimer = Timer(fireAt: eventStartDate, target: self, selector: #selector(eventStarted(_:)))
         endDateTimer = Timer(fireAt: eventEndDate, target: self, selector: #selector(eventEnded(_:)))
+
+        if eventStartDate > Date() {
+            startDateTimer = Timer(fireAt: eventStartDate, target: self, selector: #selector(eventStarted(_:)))
+        } else {
+            eventStarted(nil)
+        }
     }
 
     func clearTimers() {
@@ -129,7 +134,7 @@ private extension StatusMenuController {
     }
 
     @objc
-    func eventStarted(_ sender: Timer) {
+    func eventStarted(_ sender: Timer?) {
         guard let title = title else { return }
         scrollingStatusItemView.text = "Current - \(title)"
     }
