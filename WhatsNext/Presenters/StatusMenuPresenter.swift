@@ -30,6 +30,8 @@ class StatusMenuPresenter: UpdateHandling {
         return event.endDate
     }
 
+    private var timer: Timer?
+
     private var event: EKEvent? {
         let startOfDay = Calendar.current.startOfDay(for: Date())
         guard let end = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay) else { return nil }
@@ -50,8 +52,9 @@ extension StatusMenuPresenter {
             sself.calendars = EKEventStore().calendars(for: EKEntityType.event)
             sself.updateHandler?(error)
 
-            let timer = Timer(timeInterval: 60.0, target: sself, selector: #selector(sself.refreshCalendar(_:)), userInfo: nil, repeats: true)
-            RunLoop.main.add(timer, forMode: .common)
+            if sself.timer == nil {
+                sself.timer = Timer(timeInterval: 60.0, target: sself, selector: #selector(sself.refreshCalendar(_:)), userInfo: nil, repeats: true)
+            }
         }
     }
 

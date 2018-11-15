@@ -20,6 +20,7 @@
 		DB184F722191448500B7AE5E /* NSObject+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F712191448500B7AE5E /* NSObject+Alert.swift */; };
 		DB184F752191460500B7AE5E /* CalendarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F742191460500B7AE5E /* CalendarError.swift */; };
 		DB184F78219161C700B7AE5E /* RootFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB184F77219161C700B7AE5E /* RootFlow.swift */; };
+		DB3588E4219E00B100FB4294 /* ScrollingStatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3588E3219E00B100FB4294 /* ScrollingStatusItemView.swift */; };
 		DB8592392192538100B9047A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8592382192538100B9047A /* NotificationViewController.swift */; };
 		DB85923B2192543800B9047A /* NotificationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923A2192543800B9047A /* NotificationWindowController.swift */; };
 		DB85923D2192926400B9047A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85923C2192926400B9047A /* NotificationView.swift */; };
@@ -50,6 +51,7 @@
 		DB184F712191448500B7AE5E /* NSObject+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Alert.swift"; sourceTree = "<group>"; };
 		DB184F742191460500B7AE5E /* CalendarError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarError.swift; sourceTree = "<group>"; };
 		DB184F77219161C700B7AE5E /* RootFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFlow.swift; sourceTree = "<group>"; };
+		DB3588E3219E00B100FB4294 /* ScrollingStatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingStatusItemView.swift; sourceTree = "<group>"; };
 		DB8592382192538100B9047A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		DB85923A2192543800B9047A /* NotificationWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWindowController.swift; sourceTree = "<group>"; };
 		DB85923C2192926400B9047A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				DB184F50218FB06B00B7AE5E /* EmailSelectionCell.swift */,
 				DB85923C2192926400B9047A /* NotificationView.swift */,
 				DB0B84202190C430001DE747 /* ScrollingTextView.swift */,
+				DB3588E3219E00B100FB4294 /* ScrollingStatusItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				DB184F6A21913A9900B7AE5E /* StatusMenuPresenter.swift in Sources */,
 				DB85923D2192926400B9047A /* NotificationView.swift in Sources */,
 				DB184F702191440700B7AE5E /* UpdateHandling.swift in Sources */,
+				DB3588E4219E00B100FB4294 /* ScrollingStatusItemView.swift in Sources */,
 				DB85925A2193D65300B9047A /* RunLoop+Utils.swift in Sources */,
 				DB184F2D218E69AF00B7AE5E /* AppDelegate.swift in Sources */,
 				DB85923B2192543800B9047A /* NotificationWindowController.swift in Sources */,

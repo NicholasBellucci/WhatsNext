@@ -43,7 +43,7 @@ class NotificationView: NSView {
         let textView = ScrollingTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = NSFont.systemFont(ofSize: 11)
-        textView.setup(string: "10 mins", width: 50)
+        textView.setup(string: "10 mins")
         return textView
     }()
 
@@ -70,7 +70,7 @@ class NotificationView: NSView {
 
 extension NotificationView {
     func load(viewModel: EventViewModel) {
-        eventTextView.setup(string: viewModel.title, width: 210, speed: 0.04)
+        eventTextView.setup(string: viewModel.title)
     }
 }
 

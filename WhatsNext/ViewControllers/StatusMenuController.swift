@@ -11,11 +11,8 @@ import EventKit
 
 class StatusMenuController: NSObject {
     private enum Constants {
-        static let itemLength: CGFloat = 200
-        static let widthConstraint: CGFloat = 170
-        static let textViewLength: CGFloat = 150
-        static let baseLength: CGFloat = 30
-        static let padding: CGFloat = 6
+        static let statusItemIconLength: CGFloat = 30
+        static let statusItemLength: CGFloat = 250
     }
 
     var size: CGFloat = 0
@@ -36,35 +33,31 @@ class StatusMenuController: NSObject {
         self?.load(viewModel: self?.presenter.eventViewModel)
     }
 
-    private lazy var contentView: NSView? = {
-        let view = (statusItem.value(forKey: "window") as? NSWindow)?.contentView
-        return view
-    }()
-
-    private lazy var iconImageView: NSImageView = {
-        let imageView = NSImageView(frame: .zero)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = NSImage(named: "icon")
-        imageView.image?.isTemplate = true
-        return imageView
-    }()
-
-    private lazy var scrollingTextView: ScrollingTextView = {
-        let scrollingText = ScrollingTextView()
-        scrollingText.translatesAutoresizingMaskIntoConstraints = false
-        return scrollingText
-    }()
-
     private lazy var windowController: PreferencesWindowController = {
         let windowController = PreferencesWindowController()
         return windowController
     }()
 
-    private lazy var widthConstraint: NSLayoutConstraint = {
-        let constraint = NSLayoutConstraint(item: scrollingTextView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 0, constant: 0)
-        constraint.isActive = true
-        return constraint
+    private lazy var contentView: NSView? = {
+        let view = (statusItem.value(forKey: "window") as? NSWindow)?.contentView
+        return view
     }()
+
+    private lazy var scrollingStatusItemView: ScrollingStatusItemView = {
+        let view = ScrollingStatusItemView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.icon = NSImage(named: "icon")
+        view.lengthHandler = handleLength
+        return view
+    }()
+
+    private lazy var handleLength: StatusItemLengthUpdate = { length in
+        if length < Constants.statusItemLength {
+            self.statusItem.length = length
+        } else {
+            self.statusItem.length = Constants.statusItemLength
+        }
+    }
 
     required init(presenter: StatusMenuPresenter, statusItem: NSStatusItem) {
         self.presenter = presenter
@@ -77,7 +70,7 @@ extension StatusMenuController {
     func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateEvent(_:)), name: NSNotification.Name.EKEventStoreChanged, object: nil)
 
-        statusItem.length = Constants.baseLength
+        statusItem.length = Constants.statusItemIconLength
         presenter.updateHandler = handleUpdate
         presenter.load()
         
@@ -88,42 +81,28 @@ extension StatusMenuController {
 private extension StatusMenuController {
     func loadSubviews() {
         guard let contentView = contentView else { return }
-        contentView.addSubview(scrollingTextView)
-        contentView.addSubview(iconImageView)
+        contentView.addSubview(scrollingStatusItemView)
 
         NSLayoutConstraint.activate([
-            iconImageView.rightAnchor.constraint(equalTo: scrollingTextView.leftAnchor),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height - Constants.padding),
-            iconImageView.widthAnchor.constraint(equalToConstant: 30)])
-
-        NSLayoutConstraint.activate([
-            scrollingTextView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            scrollingTextView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scrollingTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
+            scrollingStatusItemView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scrollingStatusItemView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            scrollingStatusItemView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            scrollingStatusItemView.heightAnchor.constraint(equalToConstant: 22)])
 
     }
 
     func load(viewModel: EventViewModel?) {
         guard let viewModel = viewModel else {
-            statusItem.length = Constants.baseLength
-            widthConstraint.constant = 0
+            statusItem.length = Constants.statusItemIconLength
             return
         }
-
-        statusItem.length = Constants.itemLength
-        widthConstraint.constant = Constants.widthConstraint
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         title = viewModel.title
-        updateTextView(with: "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)")
+        scrollingStatusItemView.text = "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)"
         clearTimers()
         addTimers()
-    }
-
-    func updateTextView(with string: String) {
-        scrollingTextView.setup(string: string, width: Constants.textViewLength, speed: 0.04)
     }
 
     func addTimers() {
@@ -132,8 +111,6 @@ private extension StatusMenuController {
         alertTimer = Date() < reminderDate ? Timer(fireAt: reminderDate, target: self, selector: #selector(eventReminder(_:))) : nil
         startDateTimer = Timer(fireAt: eventStartDate, target: self, selector: #selector(eventStarted(_:)))
         endDateTimer = Timer(fireAt: eventEndDate, target: self, selector: #selector(eventEnded(_:)))
-
-        RunLoop.main.add([alertTimer, startDateTimer, endDateTimer], forMode: .common)
     }
 
     func clearTimers() {
@@ -154,7 +131,7 @@ private extension StatusMenuController {
     @objc
     func eventStarted(_ sender: Timer) {
         guard let title = title else { return }
-        updateTextView(with: "Current - \(title)")
+        scrollingStatusItemView.text = "Current - \(title)"
     }
 
     @objc
