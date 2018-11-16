@@ -11,6 +11,7 @@ import EventKit
 
 class RootFlow {
     private var statusMenuController: StatusMenuController?
+    private var currentEvent: EKEvent?
 
     required init () {}
 }
@@ -30,6 +31,8 @@ private extension RootFlow {
     @objc
     func eventNotification(_ sender: Notification) {
         guard let event = sender.object as? EKEvent else { return }
+        guard event != currentEvent else { return }
+        currentEvent = event
         let controller = NotificationWindowController(event: event)
         guard let window = controller.window else { return }
         NSApp.runModal(for: window)

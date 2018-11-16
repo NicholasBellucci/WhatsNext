@@ -20,6 +20,10 @@ class StatusMenuPresenter: UpdateHandling {
         return EventViewModel(title: event.title, date: event.startDate)
     }
 
+    var currentEvent: EKEvent? {
+        return event
+    }
+
     var eventStartDate: Date? {
         guard let event = event else { return nil }
         return event.startDate
@@ -56,10 +60,6 @@ extension StatusMenuPresenter {
                 sself.timer = Timer(timeInterval: 60.0, target: sself, selector: #selector(sself.refreshCalendar(_:)), userInfo: nil, repeats: true)
             }
         }
-    }
-
-    func currentEvent() -> EKEvent? {
-        return event
     }
 }
 

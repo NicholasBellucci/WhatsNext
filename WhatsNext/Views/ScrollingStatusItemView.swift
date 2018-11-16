@@ -14,6 +14,7 @@ typealias StatusItemLengthUpdate = (CGFloat) -> ()
 class ScrollingStatusItemView: NSView {
     private enum Constants {
         static let padding: CGFloat = 6
+        static let iconPadding: CGFloat = 3
         static let iconSize: CGFloat = 30
         static let defaultWidth: CGFloat = 150
         static let defaultSpeed: Double = 0.04
@@ -103,8 +104,10 @@ class ScrollingStatusItemView: NSView {
 
     override func layout() {
         super.layout()
-        length = scrollingTextView.frame.width
-        print(frame.height)
+
+        if length != scrollingTextView.frame.width {
+            length = scrollingTextView.frame.width
+        }
     }
 }
 
@@ -121,8 +124,8 @@ private extension ScrollingStatusItemView {
 
         NSLayoutConstraint.activate([
             iconImageView.leftAnchor.constraint(equalTo: leftAnchor),
-            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 3),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3)])
+            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.iconPadding),
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.iconPadding)])
     }
 
     func clicked(_ bool: Bool) {

@@ -101,7 +101,6 @@ private extension StatusMenuController {
         dateFormatter.dateFormat = "h:mm a"
         title = viewModel.title
         scrollingStatusItemView.text = "\(dateFormatter.string(from: viewModel.date)) - \(viewModel.title)"
-        clearTimers()
         addTimers()
     }
 
@@ -116,6 +115,8 @@ private extension StatusMenuController {
         } else {
             eventStarted(nil)
         }
+
+        RunLoop.main.add([alertTimer, startDateTimer, endDateTimer], forMode: .common)
     }
 
     func clearTimers() {
@@ -130,7 +131,7 @@ private extension StatusMenuController {
 
     @objc
     func eventReminder(_ sender: Timer) {
-        NotificationCenter.default.post(name: Notifications.alert.name, object: presenter.currentEvent())
+        NotificationCenter.default.post(name: Notifications.alert.name, object: presenter.currentEvent)
     }
 
     @objc
