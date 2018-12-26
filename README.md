@@ -1,5 +1,7 @@
 Disclaimer: This project is still in the works.
 
+------
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/NicholasBellucci/WhatsNext/develop/Images/Logo.png">
 </p>
