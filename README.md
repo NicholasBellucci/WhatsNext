@@ -3,7 +3,7 @@ Disclaimer: This project is no longer being worked on, has it's issues, and rema
 ------
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/NicholasBellucci/WhatsNext/develop/Images/Logo.png">
+<img src="https://raw.githubusercontent.com/NicholasBellucci/WhatsNext/tree/Images/Logo.png">
 </p>
 <p align="center">
 <a href="https://img.shields.io/badge/platform-macOS-lightgrey.svg">
